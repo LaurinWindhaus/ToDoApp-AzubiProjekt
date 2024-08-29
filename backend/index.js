@@ -4,12 +4,14 @@ const todosRoutes = require('./routes/todos');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const mongoURI = process.env.MONGO_URI;
+
 // Middleware
 app.use(express.json());
 app.use(cors());
 
 // Datenbankverbindung herstellen
-mongoose.connect('mongodb://ppdedocker1.ppdom01.poeppelmann.com:27018/', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.log(err));
 

@@ -1,0 +1,17 @@
+services:
+  # Backend Service (Node.js + Express)
+  backend:
+    build: ./backend
+    container_name: todo-backend
+    ports:
+      - "4321:5000"
+    environment:
+      MONGO_URI: mongodb://ppdedocker1.ppdom01.poeppelmann.com:27018/
+      PORT: 5000
+
+  # Frontend Service (nginx)
+  frontend:
+    build: ./frontend
+    container_name: todo-frontend
+    ports:
+      - "1234:80"
